@@ -7,7 +7,6 @@ import { requireNativeComponent } from "react-native";
 class RNIconic extends Component {
   _onChange = event => {
     this.props.onChange && this.props.onChange(event.nativeEvent.value);
-    console.log("iconic state: " + event.nativeEvent.value);
   };
 
   render() {
@@ -44,7 +43,11 @@ RNIconic.Shapes = {
   Ok: "ok",
   Rewind: "rewind",
   FastForward: "fast-forward",
-  Square: "square"
+  Square: "square",
+  BURGER: "BURGER",
+  ARROW: "ARROW",
+  X: "X",
+  CHECK: "CHECK"
 };
 
 RNIconic.propTypes = {

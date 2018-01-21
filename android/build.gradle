@@ -32,5 +32,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile 'com.balysv.materialmenu:material-menu:2.0.0'
 }
   
