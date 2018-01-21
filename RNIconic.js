@@ -6,30 +6,15 @@ import { requireNativeComponent } from "react-native";
 
 class RNIconic extends Component {
   _onChange = event => {
-    let value = false;
-    if (event.nativeEvent.value === "YES") value = true;
-
-    this.props.onChange && this.props.onChange(value);
-
-    this._iconicButton.setNativeProps({ on: event.nativeEvent.value });
+    this.props.onChange && this.props.onChange(event.nativeEvent.value);
+    console.log("iconic state: " + event.nativeEvent.value);
   };
 
   render() {
     if (Platform.OS === "ios") {
       return <IconicButton ref={ref => {
             this._iconicButton = ref;
-          }} style={{ width: this.props.size, height: this.props.size }}
-          props={{
-            roundBackgroundColor: this.props.roundBackgroundColor,
-            lineThickness: this.props.lineThickness,
-            tintColor: this.props.tintColor,
-            shape: this.props.shape,
-            selection: this.props.selection,
-            disabled: this.props.disable,
-            size: this.props.size,
-            onChange: this._onChange
-          }}
-          />;
+          }} style={{ width: this.props.size, height: this.props.size }} props={{ roundBackgroundColor: this.props.roundBackgroundColor, lineThickness: this.props.lineThickness, tintColor: this.props.tintColor, shape: this.props.shape, selection: this.props.selection, disabled: this.props.disable, size: this.props.size }} onChange={this._onChange} />;
     } else if (Platform.OS === "android") {
       return <IconicButton {...this.props} ref={ref => {
             this._iconicButton = ref;
@@ -84,7 +69,7 @@ RNIconic.defaultProps = {
 };
 
 const IconicButton = requireNativeComponent("RNIconic", RNIconic, {
-  nativeOnly: { onChange: true, on: true }
+  nativeOnly: { onChange: true }
 });
 
 export default RNIconic;

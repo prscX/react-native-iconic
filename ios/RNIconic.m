@@ -19,36 +19,6 @@ RCT_EXPORT_MODULE()
 
 RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
 {
-//    NSString *size = [json objectForKey: @"size"];
-//    NSString *color = [json objectForKey: @"color"];
-//    NSString *fillColor = [json objectForKey: @"fillColor"];
-//
-//    NSString *shape = [json objectForKey: @"shape"];
-//    NSString *disabled = [json objectForKey: @"disabled"];
-//
-//    WCLShineButton *shineButton = [[WCLShineButton alloc] initWithFrame: CGRectMake(0, 0, [size floatValue], [size floatValue])];
-//    shineButton.color = [RNShineButton colorFromHexCode: color];
-//    shineButton.fillColor = [RNShineButton colorFromHexCode: fillColor];
-//    shineButton.reactTag = view.reactTag;
-//
-//    if ([shape isEqualToString:@"heart"]) {
-//        shineButton.image = @".heart";
-//    } else if ([shape isEqualToString:@"like"]) {
-//        shineButton.image = @".like";
-//    } else if ([shape isEqualToString:@"smile"]) {
-//        shineButton.image = @".smile";
-//    } else if ([shape isEqualToString:@"star"]) {
-//        shineButton.image = @".star";
-//    }
-//
-//    UITapGestureRecognizer *singleTap =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(handleTap:)];
-//    [shineButton addGestureRecognizer: singleTap];
-//
-//    [view addSubview: shineButton];
-
-
     Boolean *rounded = (Boolean) [json objectForKey: @"rounded"];
     NSString *roundBackgroundColor = [json objectForKey: @"roundBackgroundColor"];
     NSNumber *lineThickness = [json objectForKey: @"lineThickness"];
@@ -73,13 +43,13 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
     iconicButton.roundBackgroundColor = [RNIconic colorFromHexCode: roundBackgroundColor];
     iconicButton.lineThickness = [lineThickness floatValue];
     iconicButton.tintColor = [RNIconic colorFromHexCode: tintColor];
-    
+    iconicButton.reactTag = view.reactTag;
+
     [iconicButton addTarget:self
                      action:@selector(handleSelection:)
                  forControlEvents:UIControlEventTouchUpInside];
 
     [view addSubview: iconicButton];
-
 }
 
 
@@ -99,6 +69,13 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
     }
     
     [iconicButton animateToType: shape];
+
+    NSDictionary *event = @{
+        @"target": iconicButton.reactTag,
+        @"value": iconicButton.selection,
+        @"name": @"tap",
+    };
+    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
 }
 
 -(long)getShape:(NSString *)shape {
