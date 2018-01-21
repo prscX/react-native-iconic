@@ -37,8 +37,8 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
                  buttonStyle: rounded ? buttonPlainStyle : buttonRoundedStyle
       animateToInitialState:YES];
 
-    iconicButton.shapes = shape;
-    iconicButton.selection = selection;
+    self.shapes = shape;
+    self.selection = selection;
     
     iconicButton.roundBackgroundColor = [RNIconic colorFromHexCode: roundBackgroundColor];
     iconicButton.lineThickness = [lineThickness floatValue];
@@ -55,24 +55,24 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
 
 -(void)handleSelection:(VBFPopFlatButton*)iconicButton {
 
-    NSNumber *selection = iconicButton.selection;
-    NSArray *shapes = iconicButton.shapes;
+    NSNumber *selection = [self selection];
+    NSArray *shapes = [self shapes];
     
     long shape;
     
     if (([shapes count] - 1) != [selection intValue]) {
         shape = [self getShape: [shapes objectAtIndex: ([selection intValue] + 1)]];
-        iconicButton.selection = [NSNumber numberWithInt: [selection intValue] + 1];
+        self.selection = [NSNumber numberWithInt: [selection intValue] + 1];
     } else {
         shape = [self getShape: 0];
-        iconicButton.selection = [NSNumber numberWithInt: 0];
+        self.selection = [NSNumber numberWithInt: 0];
     }
     
     [iconicButton animateToType: shape];
 
     NSDictionary *event = @{
         @"target": iconicButton.reactTag,
-        @"value": iconicButton.selection,
+        @"value": self.selection,
         @"name": @"tap",
     };
     [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];

@@ -9,5 +9,8 @@
 
 @interface RNIconic : RCTViewManager
 
+@property (nonatomic) NSArray *shapes;
+@property (nonatomic) NSNumber *selection;
+
 @end
   
