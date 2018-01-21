@@ -16,8 +16,32 @@ import RNIconic from 'react-native-iconic'
 
 export default class App extends Component<{}> {
   render() {
+    let shapes = [
+      RNIconic.Shapes.Default,
+      RNIconic.Shapes.Add,
+      RNIconic.Shapes.Minus,
+      RNIconic.Shapes.Close,
+      RNIconic.Shapes.Back,
+      RNIconic.Shapes.Forward,
+      RNIconic.Shapes.Menu,
+      RNIconic.Shapes.Download,
+      RNIconic.Shapes.Share,
+      RNIconic.Shapes.DownBasic,
+      RNIconic.Shapes.UpBasic,
+      RNIconic.Shapes.Paused,
+      RNIconic.Shapes.DownArrow,
+      RNIconic.Shapes.RightTriangle,
+      RNIconic.Shapes.LeftTriangle,
+      RNIconic.Shapes.UpTriangle,
+      RNIconic.Shapes.DownTriangle,
+      RNIconic.Shapes.Ok,
+      RNIconic.Shapes.Rewind,
+      RNIconic.Shapes.FastForward,
+      RNIconic.Shapes.Square
+    ]
+
     return <View style={styles.container}>
-        <RNIconic shape={"heart"} color={"#808080"} fillColor={"#ff0000"} size={100} />
+        <RNIconic shape={shapes} roundBackgroundColor={"#FFFFFF"} tintColor={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
       </View>;
   }
 }

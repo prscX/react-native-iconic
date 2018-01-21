@@ -42,6 +42,10 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 @property (nonatomic) FlatButtonType currentButtonType;
 @property (nonatomic) FlatButtonStyle currentButtonStyle;
 
+// Custom Fields
+@property (nonatomic) NSArray *shapes;
+@property (nonatomic) NSNumber *selection;
+
 //BackgroundColor property for rounded style button only
 @property (nonatomic, strong, nonnull) UIColor *roundBackgroundColor;
 @property (nonatomic, strong, nonnull) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
