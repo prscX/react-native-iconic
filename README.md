@@ -63,6 +63,8 @@ import RNIconic from 'react-native-iconic';
 ## Contribution
 Contributions are welcome and are greatly appreciated! Every little bit helps, and credit will always be given.
 
+> Please feel free to raise PR/Request in case you want to any icon animation library to this project
+
 ## License
 Copyright @2017 Pranav Raj Singh Chauhan
 
