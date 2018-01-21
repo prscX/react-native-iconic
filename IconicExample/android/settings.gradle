@@ -1,0 +1,5 @@
+rootProject.name = 'IconicExample'
+include ':react-native-iconic'
+project(':react-native-iconic').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-iconic/android')
+
+include ':app'
