@@ -27,9 +27,37 @@ Morphing Android menu, back, dismiss and check buttons
 import RNIconic from 'react-native-iconic';
 
 // TODO: What to do with the module?
-RNIconic;
+<RNIconic shape={shapes} roundBackgroundColor={"#FFFFFF"} tintColor={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
 ```
   
+## iOS Shapes
+- Add
+- Minus
+- Close
+- Back
+- Forward
+- Menu
+- Download
+- Share
+- DownBasic
+- UpBasic
+- Paused
+- DownArrow
+- RightTriangle
+- LeftTriangle
+- UpTriangle
+- DownTriangle
+- Ok
+- Rewind
+- FastForward
+- Square
+
+## Android Shapes
+- BURGER
+- ARROW
+- X
+- CHECK
+
 
 ## Contribution
 Contributions are welcome and are greatly appreciated! Every little bit helps, and credit will always be given.
