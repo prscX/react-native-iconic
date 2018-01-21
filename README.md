@@ -7,6 +7,8 @@ React Native Bridge for [iOS: VBFPopFlatButton](https://github.com/victorBaro/VB
 ![Screenshots](https://camo.githubusercontent.com/642bd91749dce58abfba00fe1cefdf2cf4213fd3/68747470733a2f2f7261772e6769746875622e636f6d2f62616c7973762f6d6174657269616c2d6d656e752f6d61737465722f6172742f64656d6f2e676966)
 
 
+Before we dive into on how to use this library. We would like to thank all the contributor of [iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton) & [Android: balysv/material-menu](https://github.com/balysv/material-menu) for providing such a awesome nice, cool library
+
 #### iOS: VBFPopFlatButton
 
 Flat button with 21 different states and 2 types animated using pop.
