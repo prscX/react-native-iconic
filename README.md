@@ -36,6 +36,22 @@ import RNIconic from 'react-native-iconic';
 ## Android Shapes
 `BURGER, ARROW, X, CHECK`
 
+## Props
+
+
+
+| Prop              | Type       | Default | Note                                                                                                       |
+| ----------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| `shape`       | `array`     |         | Array of shape sequence
+| `selection`      | `int`     |         | Default position of shape
+| `tintColor`       | `string`     |         | Color of the icon line                                                            |
+| `lineThickness`     | `string` |         | Thickness of icon line                                                      |
+| `size` | `int` |         | Size of Icon                                                   |  |
+| `disabled`    | `bool`     |         | Disabling the Icon Button                                        |  |
+| `onChange`      | `func`     |         | It is invoke then the value of shine button is change
+| `rounded`           | `bool`     |         | For having circle in background |
+| `roundBackgroundColor`           | `array`     |         | Color of background circle |
+
 
 ## Credits
 
