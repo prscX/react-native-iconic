@@ -52,7 +52,7 @@ export default class App extends Component<{}> {
     }
 
     return <View style={styles.container}>
-        <RNIconic shape={shapes} roundBackgroundColor={"#FFFFFF"} tintColor={"#fc4426"} size={300} selection={0} disable={false} lineThickness={5} />
+        <RNIconic shape={shapes} roundBackgroundColor={"#FFFFFF"} tintColor={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
       </View>;
   }
 }
