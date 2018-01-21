@@ -31,32 +31,10 @@ import RNIconic from 'react-native-iconic';
 ```
   
 ## iOS Shapes
-- Add
-- Minus
-- Close
-- Back
-- Forward
-- Menu
-- Download
-- Share
-- DownBasic
-- UpBasic
-- Paused
-- DownArrow
-- RightTriangle
-- LeftTriangle
-- UpTriangle
-- DownTriangle
-- Ok
-- Rewind
-- FastForward
-- Square
+`Add, Minus, Close, Back, Forward, Menu, Download, Share, DownBasic, UpBasic, Paused, DownArrow, RightTriangle, LeftTriangle, UpTriangle, DownTriangle, Ok, Rewind, FastForward, Square`
 
 ## Android Shapes
-- BURGER
-- ARROW
-- X
-- CHECK
+`BURGER, ARROW, X, CHECK`
 
 
 ## Contribution
