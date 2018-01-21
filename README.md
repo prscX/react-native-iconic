@@ -37,6 +37,11 @@ import RNIconic from 'react-native-iconic';
 `BURGER, ARROW, X, CHECK`
 
 
+## Credits
+
+- iOS lib [iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton) for iOS implement
+- Android lib [Android: balysv/material-menu](https://github.com/balysv/material-menu) for Android implement
+
 ## Contribution
 Contributions are welcome and are greatly appreciated! Every little bit helps, and credit will always be given.
 
