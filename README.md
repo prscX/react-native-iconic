@@ -84,10 +84,6 @@ RNIconic is provided under the MIT License.
 
 ![Screenshots](https://raw.githubusercontent.com/ChadCSong/ShineButton/master/demo_shine_others.gif)
 
-- React Native About Libraries: [react-native-about-libraries](https://github.com/prscX/react-native-about-libraries)
-
-![](https://github.com/prscX/react-native-about-libraries/raw/master/hero.png)
-
 - Visual Code Essential Plugins: [vs-essential-plugins](https://github.com/prscX/vs-essential-plugins)
 
 ![Screenshots](https://pbs.twimg.com/profile_images/922911523328081920/jEKFRPKV_400x400.jpg)
