@@ -70,6 +70,7 @@ Copyright @2017 Pranav Raj Singh Chauhan
 
 RNIconic is provided under the MIT License.
 
+
 ## Other Contributions
 - React Native - Spruce: [react-native-spruce](https://github.com/prscX/react-native-spruce)
 
@@ -84,9 +85,14 @@ RNIconic is provided under the MIT License.
 
 ![Screenshots](https://raw.githubusercontent.com/ChadCSong/ShineButton/master/demo_shine_others.gif)
 
-- React Native Download Button
+
+- React Native Download Button: [react-native-download-button](https://github.com/prscX/react-native-download-button)
 
 ![](https://github.com/fenjuly/ArrowDownloadButton/raw/master/screenshots/arrowdownloadbutton.gif)
+
+- React Native Siri Wave View: [react-native-siri-wave-view](https://github.com/prscX/react-native-siri-wave-view)
+
+![](https://cdn.dribbble.com/users/341264/screenshots/2203511/wave.gif)
 
 - Visual Code Essential Plugins: [vs-essential-plugins](https://github.com/prscX/vs-essential-plugins)
 
