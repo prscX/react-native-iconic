@@ -24,7 +24,7 @@ Flat button with 21 different states and 2 types animated using pop.
 #### Android: balysv/material-menu
 Morphing Android menu, back, dismiss and check buttons
 
-![Screenshots](https://camo.githubusercontent.com/642bd91749dce58abfba00fe1cefdf2cf4213fd3/68747470733a2f2f7261772e6769746875622e636f6d2f62616c7973762f6d6174657269616c2d6d656e752f6d61737465722f6172742f64656d6f2e676966)
+<img src="https://camo.githubusercontent.com/642bd91749dce58abfba00fe1cefdf2cf4213fd3/68747470733a2f2f7261772e6769746875622e636f6d2f62616c7973762f6d6174657269616c2d6d656e752f6d61737465722f6172742f64656d6f2e676966" width="600" />
 
 
 ## Getting started
