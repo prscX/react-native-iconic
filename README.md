@@ -19,8 +19,7 @@ Before we dive into on how to use this library. We would like to thank all the c
 
 | **[iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton)**             |
 | ----------------- |
-
-> Flat button with 21 different states and 2 types animated using pop.
+| Flat button with 21 different states and 2 types animated using pop. |
 
 
 | **Android: [Android: balysv/material-menu](https://github.com/balysv/material-menu)**             |
