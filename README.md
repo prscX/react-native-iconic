@@ -31,9 +31,13 @@ Before we dive into on how to use this library. We would like to thank all the c
 
 ## Getting started
 
-- `$ npm install react-native-iconic --save`
+`$ npm install react-native-iconic --save`
 
-- `$ react-native link react-native-iconic`
+`$ react-native link react-native-iconic`
+
+- **MAC**
+
+`$ cd ./node_modules/react-native-iconic/ios/ && pod install`
 
 
 ## Usage
