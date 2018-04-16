@@ -17,7 +17,7 @@ class RNIconic extends Component {
     } else if (Platform.OS === "android") {
       return <IconicButton {...this.props} ref={ref => {
             this._iconicButton = ref;
-          }} style={{ width: this.props.size, height: this.props.size }} size={this.props.size} on={this.props.value} disable={this.props.disabled} shape={this.props.shape} color={this.props.color} fillColor={this.props.fillColor} onChange={this._onChange} />;
+          }} style={{ width: this.props.size, height: this.props.size }} size={this.props.size} on={this.props.value} color={this.props.color} fillColor={this.props.fillColor} onChange={this._onChange} />;
     }
   }
 }
