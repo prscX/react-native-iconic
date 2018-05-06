@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://camo.githubusercontent.com/b18993cbfe91de8abdc0019dc9a6cd44707eec21/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3338313133332f73637265656e73686f74732f313639363538302f766266706f70666c6174627574746f6e332e676966" width="600" height="300" />
+  <img src="https://camo.githubusercontent.com/b18993cbfe91de8abdc0019dc9a6cd44707eec21/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3338313133332f73637265656e73686f74732f313639363538302f766266706f70666c6174627574746f6e332e676966" width="300"/>
 </p>
 
 <p align="center">
@@ -66,7 +66,6 @@ import RNIconic from 'react-native-iconic';
 <RNIconic shape={shapes} tintColor={"#FFFFFF"} color={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
 ```
 
-
 ## iOS Shapes
 - `Add, Minus, Close, Back, Forward, Menu, Download, Share, DownBasic, UpBasic, Paused, DownArrow, RightTriangle, LeftTriangle, UpTriangle, DownTriangle, Ok, Rewind, FastForward, Square`
 
@@ -109,7 +108,6 @@ Contributions are welcome and are greatly appreciated! Every little bit helps, a
 > Please feel free to raise PR/Request in case you want to any icon animation library to this project
 
 ## License
-Copyright @2017 Pranav Raj Singh Chauhan
+Copyright @ Pranav Raj Singh Chauhan
 
 RNIconic is provided under the Apache 2.0 License.
-
