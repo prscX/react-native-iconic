@@ -12,10 +12,8 @@
 
 # React Native Iconic
 
-React Native Bridge for [iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton) & [Android: balysv/material-menu](https://github.com/balysv/material-menu)
+React Native Bridge for below native libraries:
 
-
-Before we dive into on how to use this library. We would like to thank all the contributor of [iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton) & [Android: balysv/material-menu](https://github.com/balysv/material-menu) for providing such a awesome nice, cool library
 
 | **[iOS: VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton)**             |
 | ----------------- |
