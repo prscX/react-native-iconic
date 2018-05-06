@@ -14,6 +14,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.github.zagum.expandicon.ExpandIconView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,11 +40,14 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
         final int viewId = randomId;
 
         final MaterialMenuView iconicButton = new MaterialMenuView(reactContext.getCurrentActivity());
-        iconicButton.setVisible(true);
-        iconicButton.setColor(Color.BLACK);
+        iconicButton.setVisible(false);
+
+        final ExpandIconView expandIconView = new ExpandIconView(reactContext.getCurrentActivity());
+        expandIconView.setVisibility(View.INVISIBLE);
 
         final FrameLayout frameLayout = new FrameLayout(reactContext.getCurrentActivity());
         frameLayout.addView(iconicButton);
+        frameLayout.addView(expandIconView);
 
         iconicButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +55,39 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
                 if (selection + 1 == shapes.size()) selection = 0;
                 else selection = selection + 1;
 
-                iconicButton.animateIconState(getState(selection));
+                String state = (String) shapes.get(selection);
+
+                if (state.equalsIgnoreCase("BURGER")) {
+                    iconicButton.animateIconState(MaterialMenuDrawable.IconState.BURGER);
+                } else if (state.equalsIgnoreCase("ARROW")) {
+                    iconicButton.animateIconState(MaterialMenuDrawable.IconState.ARROW);
+                } else if (state.equalsIgnoreCase("X")) {
+                    iconicButton.animateIconState(MaterialMenuDrawable.IconState.X);
+                } else if (state.equalsIgnoreCase("CHECK")) {
+                    iconicButton.animateIconState(MaterialMenuDrawable.IconState.CHECK);
+                }
+
+                int id = frameLayout.getId();
+                reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(
+                        new RNIconicEvent(id, selection)
+                );
+            }
+        });
+
+
+        expandIconView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selection + 1 == shapes.size()) selection = 0;
+                else selection = selection + 1;
+
+                String state = (String) shapes.get(selection);
+
+                if (state.equalsIgnoreCase("up-basic")) {
+                    expandIconView.switchState(true);
+                } else if (state.equalsIgnoreCase("down-basic")) {
+                    expandIconView.switchState(true);
+                }
 
                 int id = frameLayout.getId();
                 reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(
@@ -66,15 +102,21 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
     @ReactProp(name = "size")
     public void setSize(FrameLayout iconicButtonFrame, int size) {
         MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(size, size);
-        iconicButton.setLayoutParams(layoutParams);
+        ExpandIconView expandIconView = (ExpandIconView) iconicButtonFrame.getChildAt(1);
+
+        iconicButton.onSizeChanged(size, size, size, size);
+        expandIconView.onSizeChanged(size, size, size, size);
     }
 
-    @ReactProp(name = "tintColor")
-    public void setTintColor(FrameLayout iconicButtonFrame, String color) {
+    @ReactProp(name = "color")
+    public void setColor(FrameLayout iconicButtonFrame, String color) {
         MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
+        ExpandIconView expandIconView = (ExpandIconView) iconicButtonFrame.getChildAt(1);
+
         iconicButton.setColor(Color.parseColor(color));
+        expandIconView.setColor(Color.parseColor(color));
     }
+
 
     @ReactProp(name = "selection")
     public void setSelection(FrameLayout iconicButtonFrame, int selc) {
@@ -85,23 +127,29 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
     public void setShape(FrameLayout iconicButtonFrame, ReadableArray shps) {
         shapes = shps.toArrayList();
 
-        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
-        iconicButton.setIconState(getState(selection));
-    }
-
-    private MaterialMenuDrawable.IconState getState(int selection) {
         String state = (String) shapes.get(selection);
 
-        if (state.equalsIgnoreCase("BURGER")) {
-            return MaterialMenuDrawable.IconState.BURGER;
-        } else if (state.equalsIgnoreCase("ARROW")) {
-            return MaterialMenuDrawable.IconState.ARROW;
-        } else if (state.equalsIgnoreCase("X")) {
-            return MaterialMenuDrawable.IconState.X;
-        } else if (state.equalsIgnoreCase("CHECK")) {
-            return MaterialMenuDrawable.IconState.CHECK;
-        }
+        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
+        ExpandIconView expandIconView = (ExpandIconView) iconicButtonFrame.getChildAt(1);
 
-        return MaterialMenuDrawable.IconState.ARROW;
+        if (state.equalsIgnoreCase("BURGER")) {
+            iconicButton.setVisible(true);
+            iconicButton.setIconState(MaterialMenuDrawable.IconState.BURGER);
+        } else if (state.equalsIgnoreCase("ARROW")) {
+            iconicButton.setVisible(true);
+            iconicButton.setIconState(MaterialMenuDrawable.IconState.ARROW);
+        } else if (state.equalsIgnoreCase("X")) {
+            iconicButton.setVisible(true);
+            iconicButton.setIconState(MaterialMenuDrawable.IconState.X);
+        } else if (state.equalsIgnoreCase("CHECK")) {
+            iconicButton.setVisible(true);
+            iconicButton.setIconState(MaterialMenuDrawable.IconState.CHECK);
+        } else if (state.equalsIgnoreCase("up-basic")) {
+            expandIconView.setVisibility(View.VISIBLE);
+            expandIconView.setState(ExpandIconView.LESS, false);
+        } else if (state.equalsIgnoreCase("down-basic")) {
+            expandIconView.setVisibility(View.VISIBLE);
+            expandIconView.setState(ExpandIconView.MORE, false);
+        }
     }
 }

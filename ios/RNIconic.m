@@ -10,46 +10,48 @@
 
 RCT_EXPORT_MODULE()
 
-- (UIView *)view
-{
-    UIView *view = [[UIView alloc] init];
-    return view;
-}
-
-
-RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
-{
-    Boolean *rounded = (Boolean) [json objectForKey: @"rounded"];
-    NSString *roundBackgroundColor = [json objectForKey: @"roundBackgroundColor"];
-    NSNumber *lineThickness = [json objectForKey: @"lineThickness"];
-    NSString *tintColor = [json objectForKey: @"tintColor"];
-    
-    NSArray *shape = [json objectForKey: @"shape"];
-    
-    NSString *disable = [json objectForKey: @"disable"];
-    
-    NSNumber *selection = [json objectForKey: @"selection"];
-    NSNumber *size = [json objectForKey: @"size"];
-    
-    
-     VBFPopFlatButton *iconicButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(0, 0, [size floatValue], [size floatValue])
-                 buttonType:[self getShape: [shape objectAtIndex: [selection integerValue]]]
-                 buttonStyle: rounded ? buttonPlainStyle : buttonRoundedStyle
-      animateToInitialState:YES];
-
-    self.shapes = shape;
-    self.selection = selection;
-    
-    iconicButton.roundBackgroundColor = [RNIconic colorFromHexCode: roundBackgroundColor];
-    iconicButton.lineThickness = [lineThickness floatValue];
-    iconicButton.tintColor = [RNIconic colorFromHexCode: tintColor];
-    iconicButton.reactTag = view.reactTag;
-
+- (VBFPopFlatButton *)view {
+    VBFPopFlatButton *iconicButton = [[VBFPopFlatButton alloc] init];
     [iconicButton addTarget:self
                      action:@selector(handleSelection:)
                  forControlEvents:UIControlEventTouchUpInside];
 
-    [view addSubview: iconicButton];
+    return iconicButton;
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(size, NSNumber *, VBFPopFlatButton) {
+    view.frame = CGRectMake(0, 0, [json floatValue], [json floatValue]);
+    [view commonSetup];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(rounded, NSBoolean *, VBFPopFlatButton) {
+    if ([json integerValue] == 1) {
+        [view setCurrentButtonStyle:(FlatButtonStyle) buttonRoundedStyle];
+    } else {
+        [view setCurrentButtonStyle:(FlatButtonStyle) buttonPlainStyle];
+    }
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(lineThickness, NSNumber *, VBFPopFlatButton) {
+    view.lineThickness = [json floatValue];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(color, NSNumber *, VBFPopFlatButton) {
+    view.tintColor = [RNIconic colorFromHexCode: json];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(shape, NSArray *, VBFPopFlatButton) {
+    self.shapes = json;
+    [view setCurrentButtonType: [self getShape: [self.shapes objectAtIndex: [self.selection intValue]]]];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(selection, NSNumber *, VBFPopFlatButton) {
+    self.selection = json;
+}
+
+
+RCT_CUSTOM_VIEW_PROPERTY(tintColor, NSString *, VBFPopFlatButton) {
+    [view setRoundBackgroundColor: [RNIconic colorFromHexCode: json]];
 }
 
 

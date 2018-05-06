@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-iconic",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Native - Animated Icons with different states",
   "main": "RNIconic.js",
   "scripts": {
