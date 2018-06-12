@@ -44,9 +44,22 @@ React Native Bridge for below native libraries:
 Please add below snippet into your app build.gradle:
 
 ```javascript
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
+        ...
+    }
+}
+
 allprojects {
     repositories {
-        maven { url 'https://jitpack.io' }
+        mavenLocal()
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
+        ...
     }
 }
 ```
