@@ -70,6 +70,7 @@ class RNIconic extends Component {
         disable={this.props.disabled}
         shape={this.props.shape}
         color={this.props.color}
+        selection={this.props.selection}
         onChange={this._onChange}
       />
     );

@@ -3,10 +3,21 @@
 
 @implementation RNIconic
 
-- (dispatch_queue_t)methodQueue
-{
+- (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }
+
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.selection = 0;
+        self.shapes = [[NSArray alloc] init];
+    }
+    
+    return self;
+}
+
 
 RCT_EXPORT_MODULE()
 
@@ -14,8 +25,8 @@ RCT_EXPORT_MODULE()
     VBFPopFlatButton *iconicButton = [[VBFPopFlatButton alloc] init];
     [iconicButton addTarget:self
                      action:@selector(handleSelection:)
-                 forControlEvents:UIControlEventTouchUpInside];
-
+           forControlEvents:UIControlEventTouchUpInside];
+    
     return iconicButton;
 }
 
@@ -56,7 +67,7 @@ RCT_CUSTOM_VIEW_PROPERTY(tintColor, NSString *, VBFPopFlatButton) {
 
 
 -(void)handleSelection:(VBFPopFlatButton*)iconicButton {
-
+    
     NSNumber *selection = [self selection];
     NSArray *shapes = [self shapes];
     
@@ -66,17 +77,17 @@ RCT_CUSTOM_VIEW_PROPERTY(tintColor, NSString *, VBFPopFlatButton) {
         shape = [self getShape: [shapes objectAtIndex: ([selection intValue] + 1)]];
         self.selection = [NSNumber numberWithInt: [selection intValue] + 1];
     } else {
-        shape = [self getShape: 0];
+        shape = [self getShape: [shapes objectAtIndex: 0]];
         self.selection = [NSNumber numberWithInt: 0];
     }
     
     [iconicButton animateToType: shape];
-
+    
     NSDictionary *event = @{
-        @"target": iconicButton.reactTag,
-        @"value": self.selection,
-        @"name": @"tap",
-    };
+                            @"target": iconicButton.reactTag,
+                            @"value": self.selection,
+                            @"name": @"tap",
+                            };
     [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
 }
 
@@ -152,4 +163,4 @@ RCT_CUSTOM_VIEW_PROPERTY(tintColor, NSString *, VBFPopFlatButton) {
 }
 
 @end
-  
+
