@@ -58,6 +58,10 @@ RCT_CUSTOM_VIEW_PROPERTY(shape, NSArray *, VBFPopFlatButton) {
 
 RCT_CUSTOM_VIEW_PROPERTY(selection, NSNumber *, VBFPopFlatButton) {
     self.selection = json;
+
+    if (self.shapes != nil && [self.shapes count] > 0) {
+        [view setCurrentButtonType: [self getShape: [self.shapes objectAtIndex: [self.selection intValue]]]];
+    }
 }
 
 
