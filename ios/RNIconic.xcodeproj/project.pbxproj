@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3F227F522E392134F9389D /* libPods-RNIconic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DD16BBC4D160BD3BE0A08C /* libPods-RNIconic.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNIconic.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIconic.m */; };
 		CEF03E5F20135F5700AB272B /* libpop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF03E5C20135F5200AB272B /* libpop.a */; };
 		CEF03E6020135F5700AB272B /* libVBFPopFlatButton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF03E5E20135F5200AB272B /* libVBFPopFlatButton.a */; };
@@ -65,6 +66,7 @@
 			files = (
 				CEF03E5F20135F5700AB272B /* libpop.a in Frameworks */,
 				CEF03E6020135F5700AB272B /* libVBFPopFlatButton.a in Frameworks */,
+				2A3F227F522E392134F9389D /* libPods-RNIconic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +131,6 @@
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
-				6B5B4B263DABDFCE817958AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,21 +203,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B5B4B263DABDFCE817958AA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNIconic/Pods-RNIconic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A70399F1E189608FAD3B9070 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

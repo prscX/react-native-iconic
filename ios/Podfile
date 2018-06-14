@@ -7,5 +7,5 @@ target 'RNIconic' do
 
   # Pods for RNIconic
 
-  pod 'VBFPopFlatButton'
+  pod 'VBFPopFlatButton', :git => 'https://github.com/prscX/VBFPopFlatButton.git', :commit => '5ac6e640b85ed534f4d06465bfe3e5f9f114b01b'
 end

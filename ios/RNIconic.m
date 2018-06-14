@@ -3,58 +3,75 @@
 
 @implementation RNIconic
 
-- (dispatch_queue_t)methodQueue
-{
+- (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_MODULE()
 
-- (UIView *)view
-{
-    UIView *view = [[UIView alloc] init];
-    return view;
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.selection = 0;
+        self.shapes = [[NSArray alloc] init];
+    }
+    
+    return self;
 }
 
 
-RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
-{
-    Boolean *rounded = (Boolean) [json objectForKey: @"rounded"];
-    NSString *roundBackgroundColor = [json objectForKey: @"roundBackgroundColor"];
-    NSNumber *lineThickness = [json objectForKey: @"lineThickness"];
-    NSString *tintColor = [json objectForKey: @"tintColor"];
-    
-    NSArray *shape = [json objectForKey: @"shape"];
-    
-    NSString *disable = [json objectForKey: @"disable"];
-    
-    NSNumber *selection = [json objectForKey: @"selection"];
-    NSNumber *size = [json objectForKey: @"size"];
-    
-    
-     VBFPopFlatButton *iconicButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(0, 0, [size floatValue], [size floatValue])
-                 buttonType:[self getShape: [shape objectAtIndex: [selection integerValue]]]
-                 buttonStyle: rounded ? buttonPlainStyle : buttonRoundedStyle
-      animateToInitialState:YES];
+RCT_EXPORT_MODULE()
 
-    self.shapes = shape;
-    self.selection = selection;
-    
-    iconicButton.roundBackgroundColor = [RNIconic colorFromHexCode: roundBackgroundColor];
-    iconicButton.lineThickness = [lineThickness floatValue];
-    iconicButton.tintColor = [RNIconic colorFromHexCode: tintColor];
-    iconicButton.reactTag = view.reactTag;
-
+- (VBFPopFlatButton *)view {
+    VBFPopFlatButton *iconicButton = [[VBFPopFlatButton alloc] init];
     [iconicButton addTarget:self
                      action:@selector(handleSelection:)
-                 forControlEvents:UIControlEventTouchUpInside];
+           forControlEvents:UIControlEventTouchUpInside];
+    
+    return iconicButton;
+}
 
-    [view addSubview: iconicButton];
+RCT_CUSTOM_VIEW_PROPERTY(size, NSNumber *, VBFPopFlatButton) {
+    view.frame = CGRectMake(0, 0, [json floatValue], [json floatValue]);
+    [view commonSetup];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(rounded, NSBoolean *, VBFPopFlatButton) {
+    if ([json integerValue] == 1) {
+        [view setCurrentButtonStyle:(FlatButtonStyle) buttonRoundedStyle];
+    } else {
+        [view setCurrentButtonStyle:(FlatButtonStyle) buttonPlainStyle];
+    }
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(lineThickness, NSNumber *, VBFPopFlatButton) {
+    view.lineThickness = [json floatValue];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(color, NSNumber *, VBFPopFlatButton) {
+    view.tintColor = [RNIconic colorFromHexCode: json];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(shape, NSArray *, VBFPopFlatButton) {
+    self.shapes = json;
+    [view setCurrentButtonType: [self getShape: [self.shapes objectAtIndex: [self.selection intValue]]]];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(selection, NSNumber *, VBFPopFlatButton) {
+    self.selection = json;
+
+    if (self.shapes != nil && [self.shapes count] > 0) {
+        [view setCurrentButtonType: [self getShape: [self.shapes objectAtIndex: [self.selection intValue]]]];
+    }
+}
+
+
+RCT_CUSTOM_VIEW_PROPERTY(tintColor, NSString *, VBFPopFlatButton) {
+    [view setRoundBackgroundColor: [RNIconic colorFromHexCode: json]];
 }
 
 
 -(void)handleSelection:(VBFPopFlatButton*)iconicButton {
-
+    
     NSNumber *selection = [self selection];
     NSArray *shapes = [self shapes];
     
@@ -64,17 +81,17 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
         shape = [self getShape: [shapes objectAtIndex: ([selection intValue] + 1)]];
         self.selection = [NSNumber numberWithInt: [selection intValue] + 1];
     } else {
-        shape = [self getShape: 0];
+        shape = [self getShape: [shapes objectAtIndex: 0]];
         self.selection = [NSNumber numberWithInt: 0];
     }
     
     [iconicButton animateToType: shape];
-
+    
     NSDictionary *event = @{
-        @"target": iconicButton.reactTag,
-        @"value": self.selection,
-        @"name": @"tap",
-    };
+                            @"target": iconicButton.reactTag,
+                            @"value": self.selection,
+                            @"name": @"tap",
+                            };
     [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
 }
 
@@ -150,4 +167,4 @@ RCT_CUSTOM_VIEW_PROPERTY(props, NSDictonary *, UIView)
 }
 
 @end
-  
+

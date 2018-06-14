@@ -44,6 +44,8 @@ export default class App extends Component<{}> {
       ]
     } else if (Platform.OS === "android") {
       shapes = [
+        // RNIconic.Shapes.DownBasic,
+        // RNIconic.Shapes.UpBasic,
         RNIconic.Shapes.BURGER,
         RNIconic.Shapes.ARROW,
         RNIconic.Shapes.X,
@@ -52,7 +54,7 @@ export default class App extends Component<{}> {
     }
 
     return <View style={styles.container}>
-        <RNIconic shape={shapes} roundBackgroundColor={"#FFFFFF"} tintColor={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
+        <RNIconic shape={shapes} tintColor={"#FFFFFF"} color={"#fc4426"} size={200} selection={0} disable={false} lineThickness={5} />
       </View>;
   }
 }

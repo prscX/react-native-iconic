@@ -2,22 +2,23 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://maven.google.com" }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -27,11 +28,13 @@ android {
 }
 
 repositories {
+    jcenter()
     mavenCentral()
+    maven { url "https://maven.google.com" }
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.balysv.materialmenu:material-menu:2.0.0'
+    compile 'com.github.prscX:material-menu:1ce715ab5d0abf3859e3f0219454b76a1371ced8'
+    compile 'com.github.prscX:Android-ExpandIcon:fa9d3ca18a10bc8f68ff3dce0b6165a6ce719cef'
 }
-  
