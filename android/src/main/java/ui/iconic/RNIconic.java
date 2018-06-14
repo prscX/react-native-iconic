@@ -30,6 +30,7 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
 
     private ArrayList<Object> shapes = new ArrayList<Object>();
     private int selection = 0;
+    private boolean disable = false;
 
     @Override
     protected FrameLayout createViewInstance(final ThemedReactContext reactContext) {
@@ -52,6 +53,10 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
         iconicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Do not play the onClick listener if the button is disabled
+                if(disable)
+                    return;
+
                 if (selection + 1 == shapes.size()) selection = 0;
                 else selection = selection + 1;
 
@@ -117,15 +122,34 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
         expandIconView.setColor(Color.parseColor(color));
     }
 
+    @ReactProp(name = "disable")
+    public void setDisable(FrameLayout iconicButtonFrame, boolean dis) {
+        disable = dis;
+    }
 
     @ReactProp(name = "selection")
     public void setSelection(FrameLayout iconicButtonFrame, int selc) {
         selection = selc;
+
+        // Animate the icon if the selection changes
+        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
+        iconicButton.animateIconState(getState(selection));
     }
 
     @ReactProp(name = "shape")
     public void setShape(FrameLayout iconicButtonFrame, ReadableArray shps) {
         shapes = shps.toArrayList();
+
+        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
+        iconicButton.setIconState(getState(selection));
+    }
+
+    private MaterialMenuDrawable.IconState getState(int selection) {
+        String state = "";
+
+        // Make sure the shapes array is filled and the selection is in range. Otherwise, draw the default state "ARROW"
+        if(!shapes.isEmpty() && shapes.size() > selection)
+            state = (String) shapes.get(selection);
 
         String state = (String) shapes.get(selection);
 
