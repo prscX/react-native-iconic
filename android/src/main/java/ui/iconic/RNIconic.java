@@ -132,29 +132,25 @@ public class RNIconic extends ViewGroupManager<ViewGroup> {
         selection = selc;
 
         // Animate the icon if the selection changes
-        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
-        iconicButton.animateIconState(getState(selection));
+        setState(iconicButtonFrame, selection);
     }
 
     @ReactProp(name = "shape")
     public void setShape(FrameLayout iconicButtonFrame, ReadableArray shps) {
         shapes = shps.toArrayList();
 
-        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
-        iconicButton.setIconState(getState(selection));
+        setState(iconicButtonFrame, selection);
     }
 
-    private MaterialMenuDrawable.IconState getState(int selection) {
+    private void setState(FrameLayout iconicButtonFrame, int selection) {
+        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
+        ExpandIconView expandIconView = (ExpandIconView) iconicButtonFrame.getChildAt(1);
+
         String state = "";
 
         // Make sure the shapes array is filled and the selection is in range. Otherwise, draw the default state "ARROW"
         if(!shapes.isEmpty() && shapes.size() > selection)
             state = (String) shapes.get(selection);
-
-        String state = (String) shapes.get(selection);
-
-        MaterialMenuView iconicButton = (MaterialMenuView) iconicButtonFrame.getChildAt(0);
-        ExpandIconView expandIconView = (ExpandIconView) iconicButtonFrame.getChildAt(1);
 
         if (state.equalsIgnoreCase("BURGER")) {
             iconicButton.setVisible(true);

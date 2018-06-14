@@ -95,7 +95,7 @@ import RNIconic from 'react-native-iconic';
 | `color`       | `string`     |         | Specify icon color                                                            |
 | `size` | `int` |         | Size of Icon                                                   |  |
 | `disabled`    | `bool`     |         | Disabling the Icon Button                                        |  |
-| `onChange`      | `func`     |         | It is invoke then the value of shine button is change
+| `onChange`      | `func`     |         | It is invoke when the value of button is change
 | `tintColor`           | `array`     |         | Color of background circle |
 
   - **iOS**

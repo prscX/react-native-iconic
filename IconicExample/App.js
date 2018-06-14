@@ -15,9 +15,10 @@ import {
 import RNIconic from 'react-native-iconic'
 
 export default class App extends Component<{}> {
-  render() {
-    let shapes = []
-    
+  constructor (props) {
+    super(props)
+
+
     if (Platform.OS === "ios") {
       shapes = [
         RNIconic.Shapes.Default,
@@ -53,8 +54,27 @@ export default class App extends Component<{}> {
       ]
     }
 
+    let selection = 0
+
+    this.state = {
+      shapes: shapes,
+      selection: selection
+    }
+  }
+
+  componentDidMount () {
+    // setTimeout (() => {
+    //   this.setState({
+    //     selection: 0
+    //   })
+    // }, 5000)
+  }
+
+  render() {
+    let shapes = []
+    
     return <View style={styles.container}>
-        <RNIconic shape={shapes} tintColor={"#FFFFFF"} color={"#fc4426"} size={200} selection={0} disable={false} lineThickness={5} />
+        <RNIconic shape={this.state.shapes} tintColor={"#FFFFFF"} color={"#fc4426"} size={200} selection={this.state.selection} disable={false} lineThickness={5} />
       </View>;
   }
 }
