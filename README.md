@@ -1,4 +1,6 @@
 
+<h1 align="center">
+
 <p align="center">
   <img src="https://camo.githubusercontent.com/b18993cbfe91de8abdc0019dc9a6cd44707eec21/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3338313133332f73637265656e73686f74732f313639363538302f766266706f70666c6174627574746f6e332e676966" width="300"/>
 </p>
@@ -10,7 +12,10 @@
 </p>
 
 
-# React Native Iconic
+    ReactNative: Native Iconic (Android/iOS)
+
+If this project has helped you out, please support us with a star 🌟
+</h1>
 
 React Native Bridge for below native libraries:
 
@@ -33,7 +38,7 @@ React Native Bridge for below native libraries:
 
 
 
-## Getting started
+## 📖 Getting started
 
 `$ npm install react-native-iconic --save`
 
@@ -69,7 +74,7 @@ allprojects {
 `$ cd ./node_modules/react-native-iconic/ios/ && pod install`
 
 
-## Usage
+## 💻 Usage
 ```javascript
 import RNIconic from 'react-native-iconic';
 
@@ -77,14 +82,16 @@ import RNIconic from 'react-native-iconic';
 <RNIconic shape={shapes} tintColor={"#FFFFFF"} color={"#fc4426"} size={100} selection={0} disable={false} lineThickness={5} />
 ```
 
-## iOS Shapes
+## Shapes
+
+**iOS**
 - `Add, Minus, Close, Back, Forward, Menu, Download, Share, DownBasic, UpBasic, Paused, DownArrow, RightTriangle, LeftTriangle, UpTriangle, DownTriangle, Ok, Rewind, FastForward, Square`
 
-## Android Shapes
+**Android**
 - `BURGER, ARROW, X, CHECK`
 - `DownBasic, UpBasic`
 
-## Props
+## 💡 Props
 
   - **Generic**
 
@@ -106,19 +113,36 @@ import RNIconic from 'react-native-iconic';
 | `rounded`           | `bool`     |         | For having circle in background |
 
 
-
-## Credits
+## ✨ Credits
 
 - iOS Lib: [VBFPopFlatButton](https://github.com/victorBaro/VBFPopFlatButton) for iOS implement
 - Android Lib: [balysv/material-menu](https://github.com/balysv/material-menu) for Android implement
 - Android Lib: [zagum/Android-ExpandIcon](https://github.com/zagum/Android-ExpandIcon)
 
-## Contribution
+## 🤔 How to contribute
+Have an idea? Found a bug? Please raise to [ISSUES](https://github.com/prscX/react-native-iconic/issues).
 Contributions are welcome and are greatly appreciated! Every little bit helps, and credit will always be given.
 
-> Please feel free to raise PR/Request in case you want to any icon animation library to this project
+## 💫 Where is this library used?
+If you are using this library in one of your projects, add it in this list below. ✨
 
-## License
-Copyright @ Pranav Raj Singh Chauhan
 
-RNIconic is provided under the Apache 2.0 License.
+## 📜 License
+This library is provided under the Apache License.
+
+RNIconic @ [prscX](https://github.com/prscX)
+
+## 💖 Support my projects
+I open-source almost everything I can, and I try to reply everyone needing help using these projects. Obviously, this takes time. You can integrate and use these projects in your applications for free! You can even change the source code and redistribute (even resell it).
+
+However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
+* Starring and sharing the projects you like 🚀
+* If you're feeling especially charitable, please follow [prscX](https://github.com/prscX) on GitHub.
+
+  <a href="https://www.buymeacoffee.com/prscX" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
+  Thanks! ❤️
+  <br/>
+  [prscX.github.io](https://prscx.github.io)
+  <br/>
+  </ Pranav >
