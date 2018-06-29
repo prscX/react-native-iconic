@@ -71,10 +71,12 @@ allprojects {
 
 - **iOS**
 
-`$ cd ./node_modules/react-native-iconic/ios/ && pod install`
+  - After `react-native link react-native-iconic`, please verify `node_modules/react-native-iconic/ios/` contains `Pods` folder. If does not exist please execute `pod install` command on `node_modules/react-native-iconic/ios/`, if any error => try `pod repo update` then `pod install`
+
 
 
 ## 💻 Usage
+
 ```javascript
 import RNIconic from 'react-native-iconic';
 
